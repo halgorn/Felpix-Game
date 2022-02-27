@@ -35,7 +35,7 @@ public class ScritPrincipal : MonoBehaviour
         float randomPos = (3.0f * Random.value) - 1.5f;
         GameObject cano = Instantiate(objetosCanos);
         cano.transform.localScale = new Vector3(1.65f, 1.65f, 1.65f);
-        cano.transform.position = new Vector3(10, randomPos, 0);
+        cano.transform.position = new Vector3(20, randomPos, 0);
     }
 
     public void FimDeJogo(){

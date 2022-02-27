@@ -13,9 +13,9 @@ public class MoverFundoImagem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x <= -5.25f)
+        if(transform.position.x <= -24.25f)
         {
-            transform.position = new Vector2(10.5f,0);
+            transform.position = new Vector2(19.5f,0);
         }
     }
 }
