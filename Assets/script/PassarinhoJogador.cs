@@ -17,9 +17,7 @@ public class PassarinhoJogador : MonoBehaviour
     public AudioClip somHit;
     public AudioClip somScore;
 
-    gameEngine.GetComponent<AudioSource>().PlayOneShot(somVoa);
-    gameEngine.GetComponent<AudioSource>().PlayOneShot(somHit);
-    gameEngine.GetComponent<AudioSource>().PlayOneShot(somScore)
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +38,9 @@ public class PassarinhoJogador : MonoBehaviour
             GetComponent<Rigidbody2D>().AddForce(forcaImpulso);
             GameObject particula = Instantiate(ParticulasPenas);
             particula.transform.position = gameObject.transform.position;
+
+            gameEngine.GetComponent<AudioSource>().PlayOneShot(somVoa);
+           
         }
 
         transform.rotation = Quaternion.Euler(0,0, GetComponent<Rigidbody2D>().velocity.y * 5f);
@@ -49,6 +50,8 @@ public class PassarinhoJogador : MonoBehaviour
             acabouJogo = true;
             gameEngine.SendMessage("FimDeJogo");
             Destroy(gameObject);
+            gameEngine.GetComponent<AudioSource>().PlayOneShot(somHit);
+           
         }
     }
 
@@ -61,11 +64,13 @@ public class PassarinhoJogador : MonoBehaviour
 
         acabouJogo = true;
         gameEngine.SendMessage("FimDeJogo");
+        gameEngine.GetComponent<AudioSource>().PlayOneShot(somHit);
     }
 
      void OnTriggerExit2D(Collider2D col) {
         if(col.CompareTag("AreaVao")){
             gameEngine.SendMessage("marcaPonto");
+            gameEngine.GetComponent<AudioSource>().PlayOneShot(somScore);
         }
     }
 }
